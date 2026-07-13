@@ -22,7 +22,9 @@ Engineering and infrastructure teams routinely need answers buried across design
 ![App interface](evidence/01-app-interface-answer.png)
 
 A user selects their access level (engineering, legal, finance, procurement, or admin), asks a question, and receives an answer with every factual claim tagged to its source document and page.
-Live Demo: https://project-intelligence-assistant-rag-9uod8imxnleh6smvnmcqqk.streamlit.app/
+
+Live Demo: [https://project-intelligence-assistant-rag-9uod8imxnleh6smvnmcqqk.streamlit.app/]
+
 ---
 
 ## Architecture
