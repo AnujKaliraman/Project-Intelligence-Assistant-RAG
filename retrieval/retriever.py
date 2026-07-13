@@ -10,6 +10,7 @@ retrieval candidates.
 """
 
 import os
+import streamlit as st
 from dataclasses import dataclass
 from typing import List, Optional
 
@@ -19,14 +20,24 @@ import sys
 sys.path.append("../ingestion")
 from embedding_client import get_embedding  # noqa: E402
 
-
-DB_CONFIG = {
-    "host": os.environ.get("PGVECTOR_HOST", "localhost"),
-    "port": os.environ.get("PGVECTOR_PORT", "5432"),
-    "dbname": os.environ.get("PGVECTOR_DB", "postgres"),
-    "user": os.environ.get("PGVECTOR_USER"),
-    "password": os.environ.get("PGVECTOR_PASSWORD"),
-}
+tyr:
+    DB_CONFIG = {
+        "host": st.secrets["PGVECTOR_HOST"],
+        "port": st.secrets.get("PGVECTOR_PORT", "5432"),
+        "dbname": st.secrets["PGVECTOR_DB"],
+        "user": st.secrets["PGVECTOR_USER"],
+        "password": st.secrets["PGVECTOR_PASSWORD"],
+        "sslmode": "require",
+    }
+except Exception:
+    DB_CONFIG = {
+        "host": os.environ.get("PGVECTOR_HOST", "localhost"),
+        "port": os.environ.get("PGVECTOR_PORT", "5432"),
+        "dbname": os.environ.get("PGVECTOR_DB", "postgres"),
+        "user": os.environ.get("PGVECTOR_USER"),
+        "password": os.environ.get("PGVECTOR_PASSWORD"),
+        "sslmode": "require",
+    }
 
 TOP_K = 5
 
