@@ -16,7 +16,13 @@ import anthropic
 
 from retriever import RetrievedChunk
 
-client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
+try:
+   import streamlit as st
+   api_key = st.secrets["ANTHROPIC_API_KEY"]
+except Exception:
+   api_key = os.environ.get("ANTHROPIC_API_KEY")
+   
+client = anthropic.Anthropic(api_key=api_key)
 
 SYSTEM_PROMPT = """You are a project intelligence assistant for infrastructure \
 and engineering teams. You answer questions ONLY using the provided context \
