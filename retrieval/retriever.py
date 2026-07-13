@@ -20,7 +20,7 @@ import sys
 sys.path.append("../ingestion")
 from embedding_client import get_embedding  # noqa: E402
 
-tyr:
+try:
     DB_CONFIG = {
         "host": st.secrets["PGVECTOR_HOST"],
         "port": st.secrets.get("PGVECTOR_PORT", "5432"),
