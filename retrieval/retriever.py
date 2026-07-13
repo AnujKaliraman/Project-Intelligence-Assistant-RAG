@@ -17,7 +17,8 @@ from typing import List, Optional
 import psycopg2
 
 import sys
-sys.path.append("../ingestion")
+sys.path.append(os.path.join(os.path.dirname(__file__),"..","ingestion"))
+
 from embedding_client import get_embedding  # noqa: E402
 
 try:
