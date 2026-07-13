@@ -9,7 +9,9 @@ Run with: streamlit run app.py
 """
 
 import sys
-sys.path.append("../retrieval")
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__),"..","retrieval"))
+sys.path.append(os.path.join(os.path.dirname(__file__),"..","ingestion"))
 
 import streamlit as st
 from retriever import retrieve
